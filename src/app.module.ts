@@ -5,10 +5,14 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
 import * as dotenv from 'dotenv';
 import { AppJwtModule } from './auth/strategies/jwt.module';
+import { ConfigModule } from '@nestjs/config';
 
 dotenv.config();
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true, // no need to import into other modules .env variables are available everywhere
+    }),
     TypeOrmModule.forRoot({
       type: 'postgres',
       url: process.env.POSTGRES_URL,
@@ -17,10 +21,8 @@ dotenv.config();
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
       autoLoadEntities: true,
-      entities: [
-        /* tus entidades */
-      ],
-      synchronize: true, // Cuidado con esto en producción
+      entities: [],
+      synchronize: true, // not for production
       ssl: {
         rejectUnauthorized: false,
       },
