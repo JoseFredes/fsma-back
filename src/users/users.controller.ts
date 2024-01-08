@@ -29,7 +29,6 @@ export class UsersController {
       access_token: jwt.access_token,
       id: jwt.id,
       email: jwt.email,
-      firstName: jwt.firstName,
     };
   }
 }
