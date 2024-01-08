@@ -25,7 +25,12 @@ export class UsersController {
     if (!jwt) {
       return 'Credenciales incorrectas';
     }
-    return jwt;
+    return {
+      access_token: jwt.access_token,
+      id: jwt.id,
+      email: jwt.email,
+      firstName: jwt.firstName,
+    };
   }
 }
 ``;
