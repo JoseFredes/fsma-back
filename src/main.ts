@@ -6,6 +6,7 @@ async function bootstrap() {
   app.enableCors({
     origin: [
       'https://fsma-8x5kvs6xx-josefredes.vercel.app/',
+      'https://fsma-app.vercel.app',
       'http://localhost:5173/',
     ],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
